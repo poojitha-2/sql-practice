@@ -45,17 +45,23 @@ INSERT INTO Departments (dept_id, department_name, manager) VALUES
 CREATE TABLE Projects (
     project_id INT PRIMARY KEY,
     project_name VARCHAR(50),
-    department VARCHAR(30),
-    budget INT
+    emp_id INT,       -- FK to Staff table
+    start_date DATE,
+    end_date DATE
 );
-INSERT INTO Projects (project_id, project_name, department, budget) VALUES
-(201, 'Website Revamp', 'IT', 150000),
-(202, 'Recruitment Drive', 'HR', 90000),
-(203, 'Audit Analysis', 'Finance', 120000),
-(204, 'Sales Expansion', 'Sales', 200000),
-(205, 'Brand Campaign', 'Marketing', 180000);
+INSERT INTO Projects (project_id, project_name, emp_id, start_date, end_date) VALUES
+(501, 'Website Redesign', 201, '2022-01-10', '2022-06-30'),
+(502, 'Mobile App Development', 205, '2021-09-15', '2022-03-15'),
+(503, 'Data Migration', 203, '2020-05-01', '2020-12-30'),
+(504, 'Marketing Campaign', 206, '2023-01-05', NULL),
+(505, 'Cloud Setup', 209, '2022-07-10', '2023-01-10'),
+(506, 'New Sales Strategy', 204, '2021-03-20', '2021-12-31'),
+(507, 'Financial Dashboard', 215, '2020-11-01', '2021-05-30'),
+(508, 'HR Automation', 212, '2023-02-10', NULL);
+
 
 
 select * from Staff;
 select * from Departments;
 select * from Projects;
+
