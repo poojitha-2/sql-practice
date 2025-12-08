@@ -45,7 +45,7 @@ INSERT INTO Departments (dept_id, department_name, manager) VALUES
 CREATE TABLE Projects (
     project_id INT PRIMARY KEY,
     project_name VARCHAR(50),
-    emp_id INT,       -- FK to Staff table
+    emp_id INT,   
     start_date DATE,
     end_date DATE
 );
