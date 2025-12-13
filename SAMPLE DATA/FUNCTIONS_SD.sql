@@ -16,3 +16,44 @@ INSERT INTO BOOKS VALUES
 (6, 'The Alchemist', 'Paulo Coelho', 'Fiction', 299.00, 'HarperOne');
 
 select * from Books;
+
+ALTER TABLE BOOKS
+ADD published_date DATE,
+    added_to_store DATETIME,
+    last_restocked DATETIME;
+
+UPDATE BOOKS SET 
+    published_date = '2000-07-08',
+    added_to_store = '2023-02-12 10:45:00',
+    last_restocked = '2024-01-15 14:20:00'
+WHERE book_id = 1;
+
+UPDATE BOOKS SET 
+    published_date = '1988-05-01',
+    added_to_store = '2023-03-10 16:30:00',
+    last_restocked = '2024-03-01 11:00:00'
+WHERE book_id = 2;
+
+UPDATE BOOKS SET 
+    published_date = '1949-06-08',
+    added_to_store = '2023-04-20 12:00:00',
+    last_restocked = '2024-02-10 09:30:00'
+WHERE book_id = 3;
+
+UPDATE BOOKS SET 
+    published_date = '2013-05-14',
+    added_to_store = '2023-01-05 09:10:00',
+    last_restocked = '2024-03-05 18:45:00'
+WHERE book_id = 4;
+
+UPDATE BOOKS SET 
+    published_date = '2007-05-22',
+    added_to_store = '2023-06-11 14:55:00',
+    last_restocked = '2024-01-20 08:00:00'
+WHERE book_id = 5;
+
+UPDATE BOOKS SET 
+    published_date = '2019-02-05',
+    added_to_store = '2023-07-01 17:25:00',
+    last_restocked = '2024-02-25 13:15:00'
+WHERE book_id = 6;
