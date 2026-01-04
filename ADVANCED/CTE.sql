@@ -129,3 +129,66 @@ ctoa.total_order_amount
 from Customer c
 LEFT JOIN cte_total_order_amount as ctoa
 ON c.CustomerID = ctoa.CustomerID
+/*Display departments whose average salary is greater than overall average.*/
+with cte_avg_salary as
+(
+	select 
+		DeptID,
+		AVG(Salary) avg_salary
+	from Employee
+	where DeptID IS NOT NULL
+	group by DeptID
+),
+cte_overall_avg_salary as
+(
+	select 
+		AVG(Salary) overall_avg_salary
+	from Employee
+
+)
+select 
+	DeptId
+from cte_avg_salary cas
+cross join cte_overall_avg_salary coas
+where cas.avg_salary > coas.overall_avg_salary
+/*Create two CTEs:
+
+One for customers with orders
+
+One for customers without orders
+
+Display both results together.*/
+
+with cte_customers_with_orders as 
+(
+	select 
+		c.CustomerID,
+		c.CustomerName
+	from Customer c
+	JOIN Orders o ON
+	c.CustomerID = o.CustomerID
+	
+),cte_customers_without_orders as
+(
+	select 
+		c.CustomerID,
+		c.CustomerName
+	from Customer c
+	where NOT EXISTS(
+		select 1
+		from Orders o
+		where o.CustomerID = c.CustomerID
+	)
+)
+SELECT 
+    CustomerID,
+    CustomerName,
+    'With Order' AS Status
+FROM cte_customers_with_orders
+UNION ALL
+
+SELECT 
+    CustomerID,
+    CustomerName,
+    'Without Order' AS Status
+FROM cte_customers_without_orders;
